@@ -23,7 +23,7 @@ RSS: false
 # weibo_username:     xue-tong
 zhihu_username:     xue-tong-64-56
 github_username:    mjtree
-facebook_username:  雪桐
+#facebook_username:  雪桐
 twitter_username:   mjtree
 csdn_username:   m0_37713821
 
@@ -100,7 +100,7 @@ service-worker: true
 friends: [
     {
         title: "微信公众号",
-        href: "https://mp.weixin.qq.com/s/faMnor1X5d1oZ-aB9CffZA"
+        href: "https://mjtree.github.io/img/wechat_official_account.jpg"
     },{
         title: "CSDN",
         href: "https://blog.csdn.net/m0_37713821"
