@@ -9,7 +9,7 @@ tags:
     - ooxml
 ---
 
-><small>更新于：2023-11-28 23:37</small>  
+><small>更新于：2023-11-30 13:37</small>  
 
 
 ### 一、OOXML协议
@@ -34,16 +34,57 @@ tags:
 
 ![format_display](/img/article-img/2023/1125_2.png)
 
-首先将一个 .docx 文件的后缀修改成一个 .zip 格式，借用解压软件进行解压变能够看到内部的文件存储结构
+首先将一个 .docx 文件的后缀修改成一个 .zip 格式，借用解压软件进行解压便能够看到内部的文件存储结构。一个 word 文件是通过 OPC 的规范和约定进行组织和管理，以确保整个文档结构的一致性和有效性。  
+
+> docx 格式文件的读取流程  
+> 1、读取 [Content_Types].xml 文件，获得所有文件的类型；  
+> 2、读取 _rels\.rels 这个Relationship 文件，获取 document.xml 文件的位置，即 word\document.xml；  
+> 3、读取 word\document.xml 文件以及其关联的 Relationship 文件 wprd\_rels\document.xml.rels，得到该 word 所有文件的存储位置。  
+
+具体的剖析文件细节可以参考官网教程 [WordProcessingML File](http://officeopenxml.com/anatomyofOOXML.php) ，[SpreadsheetML File](http://officeopenxml.com/anatomyofOOXML-xlsx.php) ， [PresentationML File](http://officeopenxml.com/anatomyofOOXML-pptx.php) 。  
 
 
 ### 四、解析由ooxml协议构成的文件
 
+ooxml 协议构成的文件主要是 word/excel/ppt 这常见的三种文件类型，虽然 ooxml 官方有教程介绍了 xml 的标签内容，由于 xml 复杂的内容以及层级结构，直接去读取解析是存在不小的困难。因此我们通过使用工具对其进行解析，规避直接解析压缩包中的各种 xml 文件。  
 
+在 [基于linux的环境通用格式转换](https://mjtree.github.io/2023/11/08/基于linux的通用格式转换) 文章中，我们提到了微软的`OfficeVBA`接口文档，以及`wps for linux`的工具和服务搭建。基于这两个我们便可以快速便捷的去解析 ooxml 协议组成的文件。  
+
+下面提供一段简单的代码解析 word 文件（获取一些基本元素，控件类的暂不处理），后期会完善代码并更新到 github 仓库中。  
+```python
+from pywpsrpc.rpcwpsapi import createWpsRpcInstance, wpsapi
+
+
+hr, wps_rpc = createWpsRpcInstance()
+hr, wps_application = wps_rpc.getWpsApplication()
+wps_application.Visible = False
+hr, document = wps_application.Documents.Open('test.docx')
+
+start_offset, end_offset = 0, wps_application.ActiveDocument.Content.End
+search_range = wps_application.ActiveDocument.Range(0, 0)[1]
+while start_offset < end_offset:
+    search_range.Start = start_offset
+    search_range.End = start_offset + 1    
+    if search_range.ShapeRange.Count > 0:
+        print("shape")
+    elif search_range.Tables.Count > 0:
+        print("表格")
+    elif search_range.Fields.Count > 0 and search_range.Fields[1].Type == wpsapi.wdFieldTOC:
+        print("目录域")
+    elif search_range.InlineShapes.Count > 0:
+        print("图表")
+    elif search_range.OMaths.Count > 0:
+        print("公式")
+    elif search_range.ParagraphFormat.OutlineLevel < wpsapi.wdOutlineLevelBodyText:
+        print("标题")
+    elif search_range.ParagraphFormat.OutlineLevel == wpsapi.wdOutlineLevelBodyText and hasattr(search_range.ListFormat, 'List'):
+        print("列表段落")
+    else:
+        print("段落")
+```
 
 
 ### 五、小结
 
-
-
+本篇文章通过 ooxml 的官网得知了该协议的信息，简单介绍了基于 ooxml 协议实现的 word 格式文件的内部构造(OPC)，最后通过我们前期的文章中介绍的工具以及资料来完成对 word 文件的解析。  
 
