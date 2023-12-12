@@ -93,6 +93,10 @@
                 <p class="copyright text-muted">
                     Copyright &copy; {{ site.title }} {{ site.time | date: '%Y' }}
                     <br>
+                    <span class="busuanzi_value_page_pv">
+                        Page View: <span id="busuanzi_value_site_pv"></span>
+                    </span>
+                    <br>
                     Theme on <a href="{{ site.github_repo }}">GitHub</a> |
                     <iframe
                         style="margin-left: 2px; margin-bottom:-5px;"
@@ -100,9 +104,6 @@
                         src="https://ghbtns.com/github-btn.html?user={{ site.github_username }}&repo={{ site.github_username }}.github.io&type=star&count=true" >
                     </iframe>
                 </p>
-                <span id="busuanzi_container_site_pv">
-                    Page View: <span id="busuanzi_value_site_pv"></span>
-                </span>
             </div>
         </div>
     </div>
@@ -116,6 +117,9 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="{{ "/js/hux-blog.min.js " | prepend: site.baseurl }}"></script>
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
 
 <!-- Service Worker -->
 {% if site.service-worker %}
