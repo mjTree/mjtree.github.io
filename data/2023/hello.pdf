@@ -31,14 +31,14 @@ endobj
 endobj 
 4 0 obj 
 <<
-/Length 196
+/Length 194
 >>
 stream
 % 流的开始
 1. 0. 0. 1. 50. 700. cm % 位置在（50,700）
 BT  % 开始文本块
  /F0 36. Tf         % 在36pt选择/F0字体
- (Hello, World!) Tj % 放置文本字符串
+ (Hello, PDF!) Tj % 放置文本字符串
 ET  % 结束文本块
 
 endstream 
@@ -55,7 +55,7 @@ endobj xref
 0000000074 00000 n 
 0000000182 00000 n 
 0000000281 00000 n 
-0000000531 00000 n 
+0000000529 00000 n 
 trailer
 
 <<
@@ -63,5 +63,5 @@ trailer
 /Size 6
 >>
 startxref
-581
+579
 %%EOF
