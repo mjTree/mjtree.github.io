@@ -100,7 +100,7 @@ service-worker: true
 friends: [
     {
         title: "微信公众号",
-        href: "https://mjtree.github.io/img/wechat_official_account.jpg"
+        href: "/img/wechat_official_account.jpg"
     },{
         title: "CSDN",
         href: "https://blog.csdn.net/m0_37713821"
