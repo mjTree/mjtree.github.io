@@ -1,14 +1,14 @@
-%PDF-1.0
-1 0 obj
+%PDF-1.0  % 指定了PDF的版本为1.0
+1 0 obj   % 这定义了一个PDF对象(对象编号为1)，它是页面树的一部分，包含三个页面，子节点是2(第一页)和3(第二页第三页)
 << /Kids [2 0 R 3 0 R] /Type /Pages /Count 3 >>
 endobj
-4 0 obj
+4 0 obj   % 定义了第一个页面的内容，显示文本“Page One”
 << >>
 stream
 1. 0.000000 0.000000 1. 50. 770. cm BT /F0 36. Tf (Page One) Tj ET
 endstream
 endobj
-2 0 obj
+2 0 obj   % 这是第一个页面的设置，包括页面大小(MediaBox)和使用的字体(Times-Italic)
 <<
    /Rotate 0 
    /Parent 1 0 R 
@@ -19,9 +19,9 @@ endobj
    /Contents [4 0 R]
 >>
 endobj
-5 0 obj
+5 0 obj   % 这设置了PDF的页面布局为“双栏左侧开始”
 << /PageLayout /TwoColumnLeft /Pages 1 0 R /Type /Catalog >> endobj
-6 0 obj
+6 0 obj   % 设置一个页面信息
 <<
   /Rotate 0 
   /Parent 3 0 R 
@@ -32,10 +32,10 @@ endobj
   /Contents [7 0 R] 
 >>
 endobj
-3 0 obj
+3 0 obj   % 另一个页面树对象，包含两个子页面(父节点是1，子节点是8和6)
 << /Parent 1 0 R /Kids [8 0 R 6 0 R] /Count 2 /Type /Pages >> 
 endobj
-8 0 obj
+8 0 obj   % 定义了一个页面信息，需要被旋转270度，Contents指向对象9(第二页信息)
 <<
   /Rotate 270 
   /Parent 3 0 R 
@@ -46,30 +46,32 @@ endobj
   /Contents [9 0 R]
 >>
 endobj
-9 0 obj
+9 0 obj   % 定义了第二个页面的内容，显示内容是“Page Two“和“Rotated by 270 degrees”
 << >>
 stream
 q 1. 0.000000 0.000000 1. 50. 770. cm BT /F0 36. Tf (Page Two) Tj ET Q
 1. 0.000000 0.000000 1. 50. 750 cm BT /F0 16 Tf ((Rotated by 270 degrees)) Tj ET 
 endstream
 endobj
-7 0 obj
+7 0 obj   % 定义了第三个页面的内容，显示内容是“Page Three“
 << >>
 stream
 1. 0.000000 0.000000 1. 50. 770. cm BT /F0 36. Tf (Page Three) Tj ET
 endstream
 endobj
-10 0 obj
+10 0 obj  % 定义了文档的元数据，包括标题、作者、制作方、修改日期和创建日期。
 <<
    /Title (PDF Explained Example) 
    /Author (John Whitington) 
    /Producer (Manually Created) 
-   /ModDate (D:20110313002346Z) 
-   /CreationDate (D:2011)
+   /ModDate (D:20231219002346Z) 
+   /CreationDate (D:2023)
 >>
-endobj xref
+endobj
+
+xref      % 交叉引用表
 0 11
-trailer
+trailer   % 尾部信息
 <<
   /Info 10 0 R
   /Root 5 0 R
