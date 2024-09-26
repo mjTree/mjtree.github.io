@@ -1,0 +1,133 @@
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+
+
+ <script language="javascript" src="/corporeacc/scripts/barcode/jquery-1.3.2.min.js"></script>
+<script language="javascript" src="/corporeacc/scripts/barcode/jquery-barcode-2.0.2.min.js"></script>
+   <style>
+       
+      #config{
+          overflow: auto;
+          margin-bottom: 10px;
+      }
+      .config{
+          float: left;
+          width: 200px;
+          height: 250px;
+          border: 1px solid #000;
+          margin-left: 10px;
+      }
+      
+      .config .barcode2D,
+      #miscCanvas{
+        display: none;
+      }
+      #submit{
+          clear: both;
+      }
+      #barcodeTarget,
+      #canvasTarget{
+        margin-top: 20px;
+      }        
+    </style>
+<script type="text/javascript">
+
+	var jq = jQuery.noConflict();   
+
+
+	jq(document).ready(function(){ 
+	generateBarcode(); 
+	}) 
+
+
+
+ function generateBarcode(){
+ 		
+        var value = '888004609732';
+ 		var btype = 'code39';
+		  var renderer ='css';
+  		var settings = {
+          output:renderer,
+          bgColor: '#FFFFFF',
+          color:'#000000',
+          barWidth: 2,
+          barHeight: 50,
+          moduleSize: 5,
+          posX: 10,
+          posY: 20,
+          addQuietZone: 1
+        };
+  		jq("#barcodeTarget").html("").show().barcode(value, btype, settings);
+      
+}
+</script>
+<body>
+	<table id="resultTable" align="center"  width="98%"  border="1"  cellspacing="1" cellpadding="0" class="detail_table" >
+	    <tr>
+           <td colspan="8"><img src="images/red/logo.gif" width="200" height="40" alt="" /></td>
+           
+         </tr>
+         <tr>
+         <tr>
+          <td colspan="8" align="center">
+            <strong  style="font-size:14px"><span namespace="_ZJBN" style="font-size:14px;font-weight:bold">***银行</span>对账单</strong>
+            <p align="right">对账单编号：***</p>
+         </td>
+        </tr>
+        <tr>
+           <td colspan="2" width="20%">开户银行：</td>
+           <td colspan="2" width="30%">***支行</td>
+           <td colspan="2" width="20%">币    种：</td> 	
+           <td colspan="2" width="30%">人民币</td> 	
+         </tr>
+         <tr>
+             <td colspan="2" width="20%">账    户：</td>
+             <td colspan="2" width="30%">&nbsp;************</td>
+             <td colspan="2" width="20%">账户名称：</td> 	
+             <td colspan="2" width="30%">******************有限公司</td>
+         </tr>
+        <tr>    
+            
+          <td colspan="8"  background= "/corporeacc//images/ebankSeal.jpg"   style= "background-repeat: no-repeat ;background-position: right;" >
+            
+             尊敬的客户： 
+         
+           <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;您好！截止2018-07-31贵单位账户在我行的银行账面余额为:<font color="#FF9900"><strong>***</strong></font>元，
+           	          	
+          	
+           	为保障资金安全，请贵单位收到本余额对账单后认真核对。如核对相符，无需回复；核对不符，请于2018-08-20前进行回复。
+           <p align="right">对账单生成日期：2018-08-02&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+            <p>&nbsp;</p> 
+          </td>
+          </tr>
+          <tr>
+                 <td colspan="2">对账结果：</td>
+                 <td colspan="6" align="left">
+           
+                对账相符
+              
+             </td>
+          </table>
+          
+          <br>
+          <table  id="resultTable2"  align="center"  width="98%"  border="1"  cellspacing="1" cellpadding="0" class="detail_table"   >
+            <tr>
+              <td width="20%" colspan="4" >联系人姓名：***</td>
+              <td width="30%" colspan="4" >联系人电话：***</td>
+              </tr>
+          </table>
+	      <br>
+</body >
+</html>
